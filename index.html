@@ -3,113 +3,84 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTW App Template</title>
-    <!--
-        The tailwind CDN is designed for development purposes only, and is not the best choice for production.
-        Read more here: https://tailwindcss.com/docs/installation 
-    -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- example for dark theme styling when using tailwind cdn -->
-    <style>
-        body {
-            font-family:'Courier New', Courier, monospace;
-        }
-        .container {
-            width: 200px;
-            margin: auto;
-            background-color: silver;
-            padding: 5px;
-        }
-        .button {
-            float: left;
-            height: 40px;
-            width: 50px;
-            vertical-align: middle;
-            margin: 5px;
-            background-color: gray;
-            border-radius: 5px;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #333;
-        }
-        .butWide {
-            height: 40px;
-            width: 50px;
-            vertical-align: middle;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin: 5px;
-            background-color: gray;
-            border-radius: 5px;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-        }
-        /* examples for dark/light themes*/
-        /* .dark .dark\:text-white {
-            color: #fff;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #1f2937;
-        }
-        .light .light\:text-black {
-            color: #000;
-        } */
-
-        /*add your custom css rules here */
-    </style>
+    <title>Advanced calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <!-- your app code goes here -->
-    <div class = "container">
-        <div class = "button">1</div>
-        <div class = "button">2</div>
-        <div class = "button">3</div>
-        <div class = "button">4</div>
-        <div class = "button">5</div>
-        <div class = "button">6</div>
-        <div class = "button">7</div>
-        <div class = "button">8</div>
-        <div class = "button">9</div>
-        <div class = "button">0</div>
-        <div class = "button">+</div>
-        <div class = "button">-</div>
-        <div style="clear: both;"></div>
-        <div class = "butWide">=</div>  
+    <div id="Scientific-calculator">
+        <div class="outputScreen" id="resultDisplay">0</div>
+        <div class="Keyboard keyButtons">
+            <div class="button" onclick="memoryClear()">MC</div>
+            <div class="button" onclick="memoryRecall()">MR</div>
+            <div class="button" onclick="memoryAdd()">M+</div>
+            <div class="button" onclick="memorySubtract()">M-</div>
+            <div class="button" onclick="memoryStore()">MS</div>
+            <div class="button" onclick="memoryMultiply()">M*</div>
+        </div>
+        <div class="Keyboard2 buttons">
+            <div class="button" onclick="powerMode()">2<sup>nd</sup></div>
+            <div class="button" onclick="addSymbol('Math.PI')">&#960;</div>
+            <div class="button" onclick="addSymbol('Math.E')">e</div>
+            <div class="button" onclick="memoryClear()">C</div>
+            <div class="button" onclick="deleteMark()">&#8592;</div>
+            <div class="button" onclick="power()">X<sup>2</sup></div>
+            <div class="button" onclick="inverse()">1/x</div>
+            <div class="button" onclick="absolute()">|x|</div> 
+            <div class="button" onclick="addSymbol('Math.exp')">exp</div>
+            <div class="button" onclick="addSymbol('%')">mod</div>
+            <div class="button" onclick="addSymbol('Math.sqrt')">&#8730;</div>
+            <div class="button" onclick="addSymbol('(')">(</div>
+            <div class="button" onclick="addSymbol(')')">)</div>
+            <div class="button" onclick="factorial()">n!</div>
+            <div class="button" onclick="addSymbol('/')">/</div>
+            <div class="button" onclick="addSymbol('**')">x<sup>y</sup></div>
+            <div class="button" onclick="addSymbol('7')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                7</div>
+            <div class="button" onclick="addSymbol('8')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                8</div>
+            <div class="button" onclick="addSymbol('9')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                9</div>
+            <div class="button" onclick="addSymbol('*')">X</div>
+            <div class="button" onclick="addSymbol('10**')">10<sup>x</sup></div>
+            <div class="button" onclick="addSymbol('4')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                4</div>
+            <div class="button" onclick="addSymbol('5')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                5</div>
+            <div class="button" onclick="addSymbol('6')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                6</div>
+            <div class="button" onclick="addSymbol('-')">-</div>
+            <div class="button" onclick="addSymbol('Math.log10')">log</div>
+            <div class="button" onclick="addSymbol('1')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                1</div>
+            <div class="button" onclick="addSymbol('2')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                2</div>
+            <div class="button" onclick="addSymbol('3')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                3</div>
+            <div class="button" onclick="addSymbol('+')">+</div>
+            <div class="button" onclick="addSymbol('Math.log')">ln</div>
+            <div class="button" onclick="addSymbol('+/-')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                +/-</div>
+            <div class="button" onclick="addSymbol('0')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                0</div>
+            <div class="button" onclick="addSymbol('.')"
+                style="background-color: rgb(85, 107, 101); color: white; font-weight: bold;">
+                .</div>
+            <div class="button" onclick="finalResult()">=</div>
+        </div>
     </div>
-    <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
-    <script>
-        // custom config for the MTW app 
-        const mtwAppConfig = {
-            border: true // app border in the MTW page                    
-        }
-
-        ///////////////////////////////////////////////////////
-        // implement this functions in order to use private API        
-        const sendPrivateApiRequest = async () => {
-            // your code here:
-            // sendRequestToParent({ cat: 'getAssets' })
-        }        
-
-        const acceptPrivateApiResponse = async (data) => {
-            // process received data here:
-            // console.log(data)
-        }
-
-        // use this in order to send on document load
-        document.addEventListener('DOMContentLoaded', () => {
-            // your code here:
-            //sendRequestToParent({ method: 'getAssets' })
-        })
-
-    </script>
-    <script src="https://morethanwallet.com/appstore/index.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
